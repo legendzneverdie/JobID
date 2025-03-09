@@ -6,77 +6,106 @@ local CobbyJobId = Instance.new("TextButton")
 local JoindJpbId = Instance.new("Frame")
 local Join = Instance.new("TextButton")
 local X = Instance.new("TextButton")
- 
+
+local UICornerFrame = Instance.new("UICorner")
+local UICornerTextbox = Instance.new("UICorner")
+local UICornerButton1 = Instance.new("UICorner")
+local UICornerButton2 = Instance.new("UICorner")
+local UICornerXButton = Instance.new("UICorner")
+
+-- Parent to Player GUI
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
- 
+
+-- Main Frame (Darker but still see-through)
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.35575825, 0, 0.315403461, 0)
-Frame.Size = UDim2.new(0.286202937, 0, 0.366748154, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+Frame.BackgroundTransparency = 0.2 -- Slightly darker than before
+Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.Size = UDim2.new(0.3, 0, 0.3, 0)
 Frame.Draggable = true
 Frame.Selectable = true
 Frame.Active = true
- 
+
+UICornerFrame.CornerRadius = UDim.new(0.1, 0) -- Rounded edges for the frame
+UICornerFrame.Parent = Frame
+
+-- Job Input TextBox (Smaller)
 Jobinput.Name = "Jobinput"
 Jobinput.Parent = Frame
-Jobinput.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Jobinput.Position = UDim2.new(0.0836653486, 0, 0.13333343, 0)
-Jobinput.Size = UDim2.new(0.83519119, 0, 0.280000001, 0)
+Jobinput.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- White background
+Jobinput.Position = UDim2.new(0.1, 0, 0.1, 0)
+Jobinput.Size = UDim2.new(0.8, 0, 0.2, 0)
 Jobinput.Font = Enum.Font.SourceSans
-Jobinput.Text = ""
-Jobinput.TextColor3 = Color3.fromRGB(0, 0, 0)
-Jobinput.TextSize = 20
- 
+Jobinput.Text = "JobID"
+Jobinput.TextColor3 = Color3.fromRGB(150, 150, 150)
+Jobinput.TextSize = 18
+
+UICornerTextbox.CornerRadius = UDim.new(0.5, 0) -- Fully rounded input box
+UICornerTextbox.Parent = Jobinput
+
+-- Copy Job ID Button (Smaller)
 CoppyJobId.Name = "CoppyJobId"
 CoppyJobId.Parent = Frame
-CoppyJobId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CoppyJobId.Position = UDim2.new(0.0808987021, 0, 0.547677279, 0)
-CoppyJobId.Size = UDim2.new(0.359869808, 0, 0.313577682, 0)
- 
+CoppyJobId.BackgroundTransparency = 1
+CoppyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
+CoppyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
+
 CobbyJobId.Name = "CobbyJobId"
 CobbyJobId.Parent = CoppyJobId
-CobbyJobId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CobbyJobId.Size = UDim2.new(1.00000024, 0, 0.999999523, 0)
+CobbyJobId.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+CobbyJobId.BackgroundTransparency = 0.3 -- Slightly darker semi-transparent black
+CobbyJobId.Size = UDim2.new(1, 0, 1, 0)
 CobbyJobId.Font = Enum.Font.SourceSans
 CobbyJobId.Text = "Coppy Job Id"
-CobbyJobId.TextColor3 = Color3.fromRGB(0, 0, 0)
-CobbyJobId.TextSize = 30
+CobbyJobId.TextColor3 = Color3.fromRGB(255, 255, 255)
+CobbyJobId.TextSize = 16
 CobbyJobId.MouseButton1Down:Connect(function()
     setclipboard(tostring(game.JobId))
-    CobbyJobId.Text = "Successfully!"
+    CobbyJobId.Text = "Copied!"
     wait(0.5)
     CobbyJobId.Text = "Coppy Job Id"
 end)
- 
+
+UICornerButton1.CornerRadius = UDim.new(0.3, 0) -- Rounded buttons
+UICornerButton1.Parent = CobbyJobId
+
+-- Join Job ID Button (Smaller)
 JoindJpbId.Name = "JoindJpbId"
 JoindJpbId.Parent = Frame
-JoindJpbId.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-JoindJpbId.Position = UDim2.new(0.558986425, 0, 0.547677279, 0)
-JoindJpbId.Size = UDim2.new(0.359869808, 0, 0.313577682, 0)
- 
+JoindJpbId.BackgroundTransparency = 1
+JoindJpbId.Position = UDim2.new(0.55, 0, 0.5, 0)
+JoindJpbId.Size = UDim2.new(0.35, 0, 0.15, 0)
+
 Join.Name = "Join"
 Join.Parent = JoindJpbId
-Join.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Join.Size = UDim2.new(1.00000024, 0, 0.999998868, 0)
+Join.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Join.BackgroundTransparency = 0.3 -- Slightly darker semi-transparent black
+Join.Size = UDim2.new(1, 0, 1, 0)
 Join.Font = Enum.Font.SourceSans
 Join.Text = "Join Job Id"
-Join.TextColor3 = Color3.fromRGB(0, 0, 0)
-Join.TextSize = 30
+Join.TextColor3 = Color3.fromRGB(255, 255, 255)
+Join.TextSize = 16
 Join.MouseButton1Down:Connect(function()
-    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId , tostring(Jobinput.Text) )
+    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, tostring(Jobinput.Text))
 end)
- 
+
+UICornerButton2.CornerRadius = UDim.new(0.3, 0) -- Rounded buttons
+UICornerButton2.Parent = Join
+
+-- Close Button (More rounded)
 X.Name = "X"
 X.Parent = Frame
-X.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-X.Position = UDim2.new(0.918856204, 0, 1.01725263e-07, 0)
-X.Size = UDim2.new(0.081143938, 0, 0.13333343, 0)
-X.Selected = true
-X.Font = Enum.Font.SourceSans
+X.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red close button
+X.Position = UDim2.new(0.92, 0, 0, 0)
+X.Size = UDim2.new(0.07, 0, 0.07, 0) -- Smaller and square
+X.Font = Enum.Font.SourceSansBold
 X.Text = "X"
-X.TextColor3 = Color3.fromRGB(0, 0, 0)
-X.TextSize = 32
+X.TextColor3 = Color3.fromRGB(255, 255, 255)
+X.TextSize = 20
 X.MouseButton1Down:Connect(function()
     ScreenGui:Destroy()    
 end)
+
+UICornerXButton.CornerRadius = UDim.new(0.5, 0) -- Fully rounded X button
+UICornerXButton.Parent = X
