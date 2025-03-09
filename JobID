@@ -1,7 +1,7 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Jobinput = Instance.new("TextBox")
-local CoppyJobId = Instance.new("Frame")
+local CopyJobId = Instance.new("Frame")
 local CobbyJobId = Instance.new("TextButton")
 local JoindJpbId = Instance.new("Frame")
 local Join = Instance.new("TextButton")
@@ -45,25 +45,25 @@ UICornerTextbox.CornerRadius = UDim.new(0.5, 0) -- Fully rounded input box
 UICornerTextbox.Parent = Jobinput
 
 -- Copy Job ID Button
-CoppyJobId.Name = "CoppyJobId"
-CoppyJobId.Parent = Frame
-CoppyJobId.BackgroundTransparency = 1
-CoppyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
-CoppyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
+CopyJobId.Name = "CopyJobId"
+CopyJobId.Parent = Frame
+CopyJobId.BackgroundTransparency = 1
+CopyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
+CopyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
 
 CobbyJobId.Name = "CobbyJobId"
-CobbyJobId.Parent = CoppyJobId
+CobbyJobId.Parent = CopyJobId
 CobbyJobId.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 CobbyJobId.Size = UDim2.new(1, 0, 1, 0)
 CobbyJobId.Font = Enum.Font.SourceSans
-CobbyJobId.Text = "Coppy Job Id"
+CobbyJobId.Text = "Copy Job Id"
 CobbyJobId.TextColor3 = Color3.fromRGB(255, 255, 255)
 CobbyJobId.TextSize = 16
 CobbyJobId.MouseButton1Down:Connect(function()
     setclipboard(tostring(game.JobId))
     CobbyJobId.Text = "Copied!"
     wait(0.5)
-    CobbyJobId.Text = "Coppy Job Id"
+    CobbyJobId.Text = "Copy Job Id"
 end)
 
 UICornerButton1.CornerRadius = UDim.new(0.3, 0)
