@@ -1,92 +1,137 @@
-local function obfuscate()
-    local a=Instance.new("ScreenGui")
-    local b=Instance.new("Frame")
-    local c=Instance.new("TextBox")
-    local d=Instance.new("Frame")
-    local e=Instance.new("TextButton")
-    local f=Instance.new("Frame")
-    local g=Instance.new("TextButton")
-    local h=Instance.new("TextButton")
-    local i=Instance.new("UICorner")
-    local j=Instance.new("UICorner")
-    local k=Instance.new("UICorner")
-    local l=Instance.new("UICorner")
-    local m=Instance.new("UICorner")
-    a.Parent=game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    a.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
-    b.Parent=a
-    b.BackgroundColor3=Color3.fromRGB(0,0,0)
-    b.BackgroundTransparency=0.2
-    b.Position=UDim2.new(0.35,0,0.35,0)
-    b.Size=UDim2.new(0.3,0,0.3,0)
-    b.Draggable=true
-    b.Selectable=true
-    b.Active=true
-    i.CornerRadius=UDim.new(0.1,0)
-    i.Parent=b
-    c.Name="Jobinput"
-    c.Parent=b
-    c.BackgroundColor3=Color3.fromRGB(255,255,255)
-    c.Position=UDim2.new(0.1,0,0.1,0)
-    c.Size=UDim2.new(0.8,0,0.2,0)
-    c.Font=Enum.Font.SourceSans
-    c.Text="JobID"
-    c.TextColor3=Color3.fromRGB(150,150,150)
-    c.TextSize=18
-    j.CornerRadius=UDim.new(0.5,0)
-    j.Parent=c
-    d.Name="CoppyJobId"
-    d.Parent=b
-    d.BackgroundTransparency=1
-    d.Position=UDim2.new(0.1,0,0.5,0)
-    d.Size=UDim2.new(0.35,0,0.15,0)
-    e.Name="CobbyJobId"
-    e.Parent=d
-    e.BackgroundColor3=Color3.fromRGB(0,0,0)
-    e.Size=UDim2.new(1,0,1,0)
-    e.Font=Enum.Font.SourceSans
-    e.Text="Copy Job Id"
-    e.TextColor3=Color3.fromRGB(255,255,255)
-    e.TextSize=16
-    e.MouseButton1Down:Connect(function()
-        setclipboard(tostring(game.JobId))
-        e.Text="Copied!"
-        wait(0.5)
-        e.Text="Copy Job Id"
-    end)
-    k.CornerRadius=UDim.new(0.3,0)
-    k.Parent=e
-    f.Name="JoindJpbId"
-    f.Parent=b
-    f.BackgroundTransparency=1
-    f.Position=UDim2.new(0.55,0,0.5,0)
-    f.Size=UDim2.new(0.35,0,0.15,0)
-    g.Name="Join"
-    g.Parent=f
-    g.BackgroundColor3=Color3.fromRGB(0,0,0)
-    g.Size=UDim2.new(1,0,1,0)
-    g.Font=Enum.Font.SourceSans
-    g.Text="Join Job Id"
-    g.TextColor3=Color3.fromRGB(255,255,255)
-    g.TextSize=16
-    g.MouseButton1Down:Connect(function()
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,tostring(c.Text))
-    end)
-    l.CornerRadius=UDim.new(0.3,0)
-    l.Parent=g
-    h.Name="X"
-    h.Parent=b
-    h.BackgroundColor3=Color3.fromRGB(255,0,0)
-    h.Position=UDim2.new(0.92,0,0,0)
-    h.Size=UDim2.new(0.07,0,0.07,0)
-    h.Font=Enum.Font.SourceSansBold
-    h.Text="X"
-    h.TextColor3=Color3.fromRGB(255,255,255)
-    h.TextSize=20
-    h.MouseButton1Down:Connect(function()
-        a:Destroy()
-    end)
-    m.CornerRadius=UDim.new(0.5,0)
-    m.Parent=h
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Jobinput = Instance.new("TextBox")
+local CoppyJobId = Instance.new("Frame")
+local CobbyJobId = Instance.new("TextButton")
+local JoindJpbId = Instance.new("Frame")
+local Join = Instance.new("TextButton")
+local X = Instance.new("TextButton")
+
+local UICornerFrame = Instance.new("UICorner")
+local UICornerTextbox = Instance.new("UICorner")
+local UICornerButton1 = Instance.new("UICorner")
+local UICornerButton2 = Instance.new("UICorner")
+local UICornerXButton = Instance.new("UICorner")
+
+-- Parent to Player GUI
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Main Frame (Darker but still see-through)
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Black background
+Frame.BackgroundTransparency = 0.2 -- Slightly darker than before
+Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.Size = UDim2.new(0.3, 0, 0.3, 0)
+Frame.Draggable = true
+Frame.Selectable = true
+Frame.Active = true
+
+UICornerFrame.CornerRadius = UDim.new(0.1, 0) -- Rounded edges for the frame
+UICornerFrame.Parent = Frame
+
+-- Job Input TextBox (Smaller)
+Jobinput.Name = "Jobinput"
+Jobinput.Parent = Frame
+Jobinput.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- White background
+Jobinput.Position = UDim2.new(0.1, 0, 0.1, 0)
+Jobinput.Size = UDim2.new(0.8, 0, 0.2, 0)
+Jobinput.Font = Enum.Font.SourceSans
+Jobinput.Text = "JobID"
+Jobinput.TextColor3 = Color3.fromRGB(150, 150, 150)
+Jobinput.TextSize = 18
+
+UICornerTextbox.CornerRadius = UDim.new(0.5, 0) -- Fully rounded input box
+UICornerTextbox.Parent = Jobinput
+
+-- Copy Job ID Button
+CoppyJobId.Name = "CoppyJobId"
+CoppyJobId.Parent = Frame
+CoppyJobId.BackgroundTransparency = 1
+CoppyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
+CoppyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
+
+CobbyJobId.Name = "CobbyJobId"
+CobbyJobId.Parent = CoppyJobId
+CobbyJobId.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+CobbyJobId.Size = UDim2.new(1, 0, 1, 0)
+CobbyJobId.Font = Enum.Font.SourceSans
+CobbyJobId.Text = "Copy Job Id"
+CobbyJobId.TextColor3 = Color3.fromRGB(255, 255, 255)
+CobbyJobId.TextSize = 16
+CobbyJobId.MouseButton1Down:Connect(function()
+    setclipboard(tostring(game.JobId))
+    CobbyJobId.Text = "Copied!"
+    wait(0.5)
+    CobbyJobId.Text = "Copy Job Id"
+end)
+
+UICornerButton1.CornerRadius = UDim.new(0.3, 0)
+UICornerButton1.Parent = CobbyJobId
+
+-- Join Job ID Button
+JoindJpbId.Name = "JoindJpbId"
+JoindJpbId.Parent = Frame
+JoindJpbId.BackgroundTransparency = 1
+JoindJpbId.Position = UDim2.new(0.55, 0, 0.5, 0)
+JoindJpbId.Size = UDim2.new(0.35, 0, 0.15, 0)
+
+Join.Name = "Join"
+Join.Parent = JoindJpbId
+Join.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Join.Size = UDim2.new(1, 0, 1, 0)
+Join.Font = Enum.Font.SourceSans
+Join.Text = "Join Job Id"
+Join.TextColor3 = Color3.fromRGB(255, 255, 255)
+Join.TextSize = 16
+Join.MouseButton1Down:Connect(function()
+    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, tostring(Jobinput.Text))
+end)
+
+UICornerButton2.CornerRadius = UDim.new(0.3, 0)
+UICornerButton2.Parent = Join
+
+-- Close Button
+X.Name = "X"
+X.Parent = Frame
+X.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red close button
+X.Position = UDim2.new(0.92, 0, 0, 0)
+X.Size = UDim2.new(0.07, 0, 0.07, 0)
+X.Font = Enum.Font.SourceSansBold
+X.Text = "X"
+X.TextColor3 = Color3.fromRGB(255, 255, 255)
+X.TextSize = 20
+X.MouseButton1Down:Connect(function()
+    ScreenGui:Destroy()    
+end)
+
+UICornerXButton.CornerRadius = UDim.new(0.5, 0)
+UICornerXButton.Parent = X
+
+-- Add White Corner Stroke to Buttons
+local function addWhiteStroke(parent)
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(255, 255, 255)
+    stroke.Thickness = 2
+    stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    stroke.Parent = parent
 end
-obfuscate()
+
+addWhiteStroke(CobbyJobId)
+addWhiteStroke(Join)
+addWhiteStroke(X) 
+
+-- Creator Text Label
+local CreatorText = Instance.new("TextLabel")
+CreatorText.Name = "CreatorText"
+CreatorText.Parent = Frame
+CreatorText.BackgroundTransparency = 1 -- No UI background
+CreatorText.Position = UDim2.new(0.5, 0, 0.9, 0) -- Centered below buttons
+CreatorText.Size = UDim2.new(0.8, 0, 0.05, 0)
+CreatorText.Font = Enum.Font.SourceSans
+CreatorText.Text = "Creator: Fred & Seventh"
+CreatorText.TextColor3 = Color3.fromRGB(255, 255, 255) -- White text
+CreatorText.TextSize = 14
+CreatorText.TextScaled = true
+CreatorText.TextWrapped = true
+CreatorText.AnchorPoint = Vector2.new(0.5, 0) -- Ensures it's centered
