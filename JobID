@@ -1,7 +1,7 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Jobinput = Instance.new("TextBox")
-local CopyJobId = Instance.new("Frame")
+local CoppyJobId = Instance.new("Frame")
 local CobbyJobId = Instance.new("TextButton")
 local JoindJpbId = Instance.new("Frame")
 local Join = Instance.new("TextButton")
@@ -45,14 +45,14 @@ UICornerTextbox.CornerRadius = UDim.new(0.5, 0) -- Fully rounded input box
 UICornerTextbox.Parent = Jobinput
 
 -- Copy Job ID Button
-CopyJobId.Name = "CopyJobId"
-CopyJobId.Parent = Frame
-CopyJobId.BackgroundTransparency = 1
-CopyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
-CopyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
+CoppyJobId.Name = "CoppyJobId"
+CoppyJobId.Parent = Frame
+CoppyJobId.BackgroundTransparency = 1
+CoppyJobId.Position = UDim2.new(0.1, 0, 0.5, 0)
+CoppyJobId.Size = UDim2.new(0.35, 0, 0.15, 0)
 
 CobbyJobId.Name = "CobbyJobId"
-CobbyJobId.Parent = CopyJobId
+CobbyJobId.Parent = CoppyJobId
 CobbyJobId.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 CobbyJobId.Size = UDim2.new(1, 0, 1, 0)
 CobbyJobId.Font = Enum.Font.SourceSans
